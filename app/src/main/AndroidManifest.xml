@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cd"
         tools:ignore="AllowBackup">
+        <activity android:name=".Search"></activity>
+        <activity android:name=".DisplayAll" />
+        <activity android:name=".Home" />
         <activity android:name=".SplashScreen" />
         <activity android:name=".MainActivity">
             <intent-filter>
