@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f7f7f7"
+        android:orientation="vertical"
+        android:padding="10dp"
+        tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/iconIv"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_baseline_phone_android_24"
+            android:contentDescription="@string/phone" />
+
+        <!--For Phone Number Input-->
+
+        <LinearLayout
+            android:id="@+id/phoneL1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/phone_number"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:gravity="center_horizontal" />
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/please_enter_your_phone_number_to_continue"
+                android:textColor="#777777"
+                android:textAlignment="center"
+                android:gravity="center_horizontal" />
+
+            <EditText
+                android:id="@+id/phoneEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#fff"
+                android:hint="@string/_91xxxxxxxxxx"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:importantForAutofill="no" />
+
+            <Button
+                android:id="@+id/phoneContinueBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="@string/continues" />
+
+        </LinearLayout>
+
+        <!--For OTP Verification code input-->
+
+        <LinearLayout
+            android:id="@+id/codeL1"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/verification_code"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/codeSendDescription"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/please_enter_verification_code_we_send_non_91xxxxxxxxxx"
+                android:textColor="#777777"
+                android:textAlignment="center"
+                android:gravity="center_horizontal" />
+
+            <EditText
+                android:id="@+id/codeEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#fff"
+                android:hint="@string/xxxxxx"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:importantForAutofill="no" />
+
+            <TextView
+                android:id="@+id/resendCodeTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:text="@string/didn_t_get_otp_resend"
+                android:textAlignment="center"
+                android:textColor="#777777"
+                android:gravity="center_horizontal" />
+
+            <Button
+                android:id="@+id/codeSubmitBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/submit"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
