@@ -1,8 +1,5 @@
 package com.example.cd;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,6 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.cd.contact.Contact;
+import com.example.cd.data.MyDbHandler;
 import com.example.cd.databinding.ActivityMainBinding;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,6 +21,7 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -107,6 +110,53 @@ public class MainActivity extends AppCompatActivity {
                 verifyPhoneNumberWithCode(mVerificationId, code);
             }
         });
+        MyDbHandler db = new MyDbHandler(MainActivity.this);
+
+        // Creating a contact object for the db
+        Contact siya = new Contact();
+        siya.setSr_no(1);
+        siya.setName("siya");
+        siya.setAdd("abcd");
+        siya.setCity("gandhidham");
+        siya.setMobile_no("9824812056");
+        siya.setBlood("O +ve");
+
+        Contact piya = new Contact();
+        piya.setSr_no(2);
+        piya.setName("piya");
+        piya.setAdd("abcdhhh");
+        piya.setCity("gandhidham");
+        piya.setMobile_no("9824812057");
+        piya.setBlood("O +ve");
+
+        Contact jiya = new Contact();
+        jiya.setSr_no(3);
+        jiya.setName("jiya");
+        jiya.setAdd("abc");
+        jiya.setCity("gandhidham");
+        jiya.setMobile_no("9824822332");
+        jiya.setBlood("O +ve");
+
+        // Adding a contact to the db
+        db.addContact(siya);
+        db.addContact(piya);
+        db.addContact(jiya);
+
+
+        piya.setAdd("xyz");
+        db.updateContact(piya);
+
+        // Get all contacts
+        List<Contact> contactList = db.getAllContacts();
+        for (Contact contact : contactList) {
+
+            Log.d("dbinfo", "\nId: " + contact.getSr_no() + "\n" +
+                    "Name: " + contact.getName() + "\n" +
+                    "Address: " + contact.getAdd() + "\n" +
+                    "City: " + contact.getCity() + "\n" +
+                    "Mobile Number: " + contact.getMobile_no() + "\n" +
+                    "Blood Group: " + contact.getBlood() + "\n");
+        }
     }
     private void startPhoneNumberVerification(String phoneNumber) {
         pd.setMessage("Verifying Phone Number");

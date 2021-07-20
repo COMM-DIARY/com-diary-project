@@ -14,6 +14,10 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        if(getSupportActionBar()!=null){
+            getSupportActionBar().hide();
+        }
+
         Thread thread = new Thread(() -> {
             try {
                 sleep(5000);
