@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Hp">
+
+    <Button
+        android:id="@+id/DA"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:text="Display all"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        />
+
+    <TextView
+        android:layout_width="168dp"
+        android:layout_height="47dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:background="@color/purple_500"
+        android:text="SEARCH BY"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="23dp"
+        android:textStyle="italic" />
+
+    <Spinner
+        android:id="@+id/aSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginLeft="124dp"
+        android:layout_marginTop="20dp"
+        android:entries="@array/Spinner_items" />
+
+</LinearLayout>
+
+

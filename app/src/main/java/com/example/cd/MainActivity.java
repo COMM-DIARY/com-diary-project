@@ -21,7 +21,6 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -145,18 +144,6 @@ public class MainActivity extends AppCompatActivity {
 
         piya.setAdd("xyz");
         db.updateContact(piya);
-
-        // Get all contacts
-        List<Contact> contactList = db.getAllContacts();
-        for (Contact contact : contactList) {
-
-            Log.d("dbinfo", "\nId: " + contact.getSr_no() + "\n" +
-                    "Name: " + contact.getName() + "\n" +
-                    "Address: " + contact.getAdd() + "\n" +
-                    "City: " + contact.getCity() + "\n" +
-                    "Mobile Number: " + contact.getMobile_no() + "\n" +
-                    "Blood Group: " + contact.getBlood() + "\n");
-        }
     }
     private void startPhoneNumberVerification(String phoneNumber) {
         pd.setMessage("Verifying Phone Number");
@@ -211,6 +198,4 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
 
-    }
-
-}
+    }}

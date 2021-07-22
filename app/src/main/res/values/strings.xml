@@ -15,4 +15,16 @@
     <string name="sannibh_techonologies">SANNIBH TECHONOLOGIES</string>
     <string name="diary">Diary</string>
     <string name="from">from</string>
+    <string name="todo">todo</string>
+    <string name="address">Address:</string>
+    <string name="blood_group">Blood group:</string>
+    <string name="city">City:</string>
+    <string-array name="Spinner_items">
+        <item>Choose Below</item>
+        <item>Name</item>
+        <item>Contact</item>
+        <item>Address</item>
+        <item>Blood Group</item>
+        <item>City</item>
+    </string-array>
 </resources>

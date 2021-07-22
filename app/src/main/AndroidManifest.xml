@@ -5,6 +5,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -14,11 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cd"
         tools:ignore="AllowBackup">
-        <activity android:name=".Search"></activity>
+        <activity android:name=".Hp"></activity>
+        <activity android:name=".Search" />
         <activity android:name=".DisplayAll" />
-        <activity android:name=".Home" />
-        <activity android:name=".SplashScreen" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
