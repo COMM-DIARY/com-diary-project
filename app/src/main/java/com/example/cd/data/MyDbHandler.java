@@ -210,7 +210,7 @@ public class MyDbHandler extends SQLiteOpenHelper {
             Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME
                     + " where " + KEY_BLOOD + " like ?", new String[] { "%" + keyword + "%" });
             if (cursor.moveToFirst()) {
-                contacts = new ArrayList<Contact>();
+                contacts = new ArrayList<>();
                 do {
                     Contact contact = new Contact();
                     contact.setMobile_no((cursor.getString(0)));

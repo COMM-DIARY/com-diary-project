@@ -23,7 +23,8 @@
         <activity android:name=".SearchCity"/>
         <activity android:name=".SearchBlood"/>
         <activity android:name=".DisplayAll" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashScreen" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

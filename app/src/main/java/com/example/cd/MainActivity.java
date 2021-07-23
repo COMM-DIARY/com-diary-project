@@ -12,7 +12,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.cd.contact.Contact;
 import com.example.cd.data.MyDbHandler;
 import com.example.cd.databinding.ActivityMainBinding;
 import com.google.firebase.FirebaseException;
@@ -21,7 +20,6 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -39,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MyDbHandler db = new MyDbHandler(MainActivity.this);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -110,48 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 verifyPhoneNumberWithCode(mVerificationId, code);
             }
         });
-        MyDbHandler db = new MyDbHandler(MainActivity.this);
 
-        // Creating a contact object for the db
-        Contact siya = new Contact();
-        siya.setSr_no(1);
-        siya.setName("siya");
-        siya.setAdd("abcd");
-        siya.setCity("gandhidham");
-        siya.setMobile_no("9824812056");
-        siya.setBlood("O +ve");
-
-        Contact piya = new Contact();
-        piya.setSr_no(2);
-        piya.setName("piya");
-        piya.setAdd("abcdhhh");
-        piya.setCity("gandhidham");
-        piya.setMobile_no("9824812057");
-        piya.setBlood("O +ve");
-
-        Contact jiya = new Contact();
-        jiya.setSr_no(3);
-        jiya.setName("jiya");
-        jiya.setAdd("abc");
-        jiya.setCity("gandhidham");
-        jiya.setMobile_no("9824822332");
-        jiya.setBlood("O +ve");
-
-        Contact Jay = new Contact();
-        Jay.setSr_no(4);
-        Jay.setName("Jay Patel");
-        Jay.setAdd("Yo Yo");
-        Jay.setCity("Nadiad");
-        Jay.setMobile_no("9724975288");
-        Jay.setBlood("AB +ve");
-
-        db.addContact(Jay);
-
-        List<Contact> allContacts = db.getAllContacts();
-        for(Contact contact: allContacts)
-        {
-            Log.d("dbharry", "\nId: " + contact.getSr_no() + "\n" +"Name: " + contact.getName() + "\n"+"Phone Number: " + contact.getMobile_no() + "\n" );
-        }
 
     }
     private void startPhoneNumberVerification(String phoneNumber) {
