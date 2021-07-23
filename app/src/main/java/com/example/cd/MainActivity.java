@@ -21,6 +21,7 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -136,14 +137,22 @@ public class MainActivity extends AppCompatActivity {
         jiya.setMobile_no("9824822332");
         jiya.setBlood("O +ve");
 
-        // Adding a contact to the db
-        db.addContact(siya);
-        db.addContact(piya);
-        db.addContact(jiya);
+        Contact Jay = new Contact();
+        Jay.setSr_no(4);
+        Jay.setName("Jay Patel");
+        Jay.setAdd("Yo Yo");
+        Jay.setCity("Nadiad");
+        Jay.setMobile_no("9724975288");
+        Jay.setBlood("AB +ve");
 
+        db.addContact(Jay);
 
-        piya.setAdd("xyz");
-        db.updateContact(piya);
+        List<Contact> allContacts = db.getAllContacts();
+        for(Contact contact: allContacts)
+        {
+            Log.d("dbharry", "\nId: " + contact.getSr_no() + "\n" +"Name: " + contact.getName() + "\n"+"Phone Number: " + contact.getMobile_no() + "\n" );
+        }
+
     }
     private void startPhoneNumberVerification(String phoneNumber) {
         pd.setMessage("Verifying Phone Number");

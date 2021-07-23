@@ -14,6 +14,13 @@ import com.example.cd.params.Params;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.cd.params.Params.KEY_ADD;
+import static com.example.cd.params.Params.KEY_BLOOD;
+import static com.example.cd.params.Params.KEY_CITY;
+import static com.example.cd.params.Params.KEY_MOBILE;
+import static com.example.cd.params.Params.KEY_NAME;
+import static com.example.cd.params.Params.TABLE_NAME;
+
 public class MyDbHandler extends SQLiteOpenHelper {
 
     public MyDbHandler(Context context) {
@@ -22,7 +29,7 @@ public class MyDbHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String create = "CREATE TABLE " + Params.TABLE_NAME + " ("
+        String create = "CREATE TABLE " + TABLE_NAME + " ("
                 + Params.KEY_MOBILE + " TEXT PRIMARY KEY CHECK(length(" + Params.KEY_MOBILE + ") >= 10), " + Params.KEY_SR_NO + " INTEGER, " + Params.KEY_NAME
                 + " TEXT NOT NULL, " + Params.KEY_ADD + " TEXT, " + Params.KEY_CITY + " TEXT, " +
                 Params.KEY_BLOOD + " TEXT);";
@@ -47,7 +54,7 @@ public class MyDbHandler extends SQLiteOpenHelper {
         values.put(Params.KEY_MOBILE, contact.getMobile_no());
         values.put(Params.KEY_BLOOD, contact.getBlood());
 
-        db.insert(Params.TABLE_NAME, null, values);
+        db.insert(TABLE_NAME, null, values);
         Log.d("dbinfo", "Successfully inserted");
         db.close();
     }
@@ -56,7 +63,7 @@ public class MyDbHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         // Generate the query to read from the database
-        String select = "SELECT * FROM " + Params.TABLE_NAME;
+        String select = "SELECT * FROM " + TABLE_NAME;
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(select, null);
 
         //Loop through now
@@ -86,10 +93,138 @@ public class MyDbHandler extends SQLiteOpenHelper {
         values.put(Params.KEY_BLOOD, contact.getBlood());
 
         //Lets update now
-        db.update(Params.TABLE_NAME, values, Params.KEY_SR_NO + "=?",
+        db.update(TABLE_NAME, values, Params.KEY_SR_NO + "=?",
                 new String[]{String.valueOf(contact.getSr_no())});
 
+    }
+    public void deleteContact(Contact contact){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME, Params.KEY_SR_NO +"=?", new String[]{String.valueOf(contact.getSr_no())});
+        db.close();
+    }
+    public void deleteContactById(int id){SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Params.TABLE_NAME, Params.KEY_SR_NO +"=?", new String[]{String.valueOf(id)});
+        db.close();}
 
+    public List<Contact> searchName (String keyword) {
+        List<Contact> contacts = null;
+        try {
+            SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+            Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME
+                    + " where " + KEY_NAME + " like ?", new String[] { "%" + keyword + "%" });
+            if (cursor.moveToFirst()) {
+                contacts = new ArrayList<Contact>();
+                do {
+                    Contact contact = new Contact();
+                    contact.setMobile_no((cursor.getString(0)));
+                    contact.setSr_no(Integer.parseInt(cursor.getString(1)));
+                    contact.setName(cursor.getString(2));
+                    contact.setAdd(cursor.getString(3));
+                    contact.setCity(cursor.getString(4));
+                    contact.setBlood(cursor.getString(5));
+                    contacts.add(contact);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            contacts = null;
+        }
+        return contacts;
+    }
+    public List<Contact> searchPhone (String keyword) {
+        List<Contact> contacts = null;
+        try {
+            SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+            Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME
+                    + " where " + KEY_MOBILE + " like ?", new String[] { "%" + keyword + "%" });
+            if (cursor.moveToFirst()) {
+                contacts = new ArrayList<Contact>();
+                do {
+                    Contact contact = new Contact();
+                    contact.setMobile_no((cursor.getString(0)));
+                    contact.setSr_no(Integer.parseInt(cursor.getString(1)));
+                    contact.setName(cursor.getString(2));
+                    contact.setAdd(cursor.getString(3));
+                    contact.setCity(cursor.getString(4));
+                    contact.setBlood(cursor.getString(5));
+                    contacts.add(contact);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            contacts = null;
+        }
+        return contacts;
     }
 
+    public List<Contact> searchCity (String keyword) {
+        List<Contact> contacts = null;
+        try {
+            SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+            Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME
+                    + " where " + KEY_CITY + " like ?", new String[] { "%" + keyword + "%" });
+            if (cursor.moveToFirst()) {
+                contacts = new ArrayList<Contact>();
+                do {
+                    Contact contact = new Contact();
+                    contact.setMobile_no((cursor.getString(0)));
+                    contact.setSr_no(Integer.parseInt(cursor.getString(1)));
+                    contact.setName(cursor.getString(2));
+                    contact.setAdd(cursor.getString(3));
+                    contact.setCity(cursor.getString(4));
+                    contact.setBlood(cursor.getString(5));
+                    contacts.add(contact);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            contacts = null;
+        }
+        return contacts;
+    }
+    public List<Contact> searchAddress (String keyword) {
+        List<Contact> contacts = null;
+        try {
+            SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+            Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME
+                    + " where " + KEY_ADD + " like ?", new String[] { "%" + keyword + "%" });
+            if (cursor.moveToFirst()) {
+                contacts = new ArrayList<Contact>();
+                do {
+                    Contact contact = new Contact();
+                    contact.setMobile_no((cursor.getString(0)));
+                    contact.setSr_no(Integer.parseInt(cursor.getString(1)));
+                    contact.setName(cursor.getString(2));
+                    contact.setAdd(cursor.getString(3));
+                    contact.setCity(cursor.getString(4));
+                    contact.setBlood(cursor.getString(5));
+                    contacts.add(contact);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            contacts = null;
+        }
+        return contacts;
+    }
+    public List<Contact> searchBloodGroup (String keyword) {
+        List<Contact> contacts = null;
+        try {
+            SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+            Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME
+                    + " where " + KEY_BLOOD + " like ?", new String[] { "%" + keyword + "%" });
+            if (cursor.moveToFirst()) {
+                contacts = new ArrayList<Contact>();
+                do {
+                    Contact contact = new Contact();
+                    contact.setMobile_no((cursor.getString(0)));
+                    contact.setSr_no(Integer.parseInt(cursor.getString(1)));
+                    contact.setName(cursor.getString(2));
+                    contact.setAdd(cursor.getString(3));
+                    contact.setCity(cursor.getString(4));
+                    contact.setBlood(cursor.getString(5));
+                    contacts.add(contact);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            contacts = null;
+        }
+        return contacts;
+    }
 }

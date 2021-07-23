@@ -45,20 +45,20 @@ public class Hp extends AppCompatActivity implements AdapterView.OnItemSelectedL
         }
         else{
             if (parent.getItemAtPosition(position).equals("Name")) {
-                Intent i = new Intent(this, Search.class);
+                Intent i = new Intent(this, SearchName.class);
                 startActivity(i);
             } else if (parent.getItemAtPosition(position).equals("Address")) {
-                Intent i = new Intent(this, Search.class);
-                startActivity(i);
+                Intent i1 = new Intent(this, SearchAddress.class);
+                startActivity(i1);
             } else if (parent.getItemAtPosition(position).equals("Blood Group")) {
-                Intent i = new Intent(this, Search.class);
-                startActivity(i);
+                Intent i2 = new Intent(this, SearchBlood.class);
+                startActivity(i2);
             } else if (parent.getItemAtPosition(position).equals("Contact")) {
-                Intent i = new Intent(this, Search.class);
-                startActivity(i);
+                Intent i3 = new Intent(this, SearchPhone.class);
+                startActivity(i3);
             } else if (parent.getItemAtPosition(position).equals("City")) {
-                Intent i = new Intent(this, Search.class);
-                startActivity(i);
+                Intent i4 = new Intent(this, SearchCity.class);
+                startActivity(i4);
             }
         }
     }

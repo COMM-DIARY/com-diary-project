@@ -34,14 +34,6 @@ public class DisplayAll extends AppCompatActivity {
 
         List<Contact> contactList = db.getAllContacts();
         for (Contact contact : contactList) {
-
-            Log.d("dbinfo", "\nId: " + contact.getSr_no() + "\n" +
-                    "Name: " + contact.getName() + "\n" +
-                    "Address: " + contact.getAdd() + "\n" +
-                    "City: " + contact.getCity() + "\n" +
-                    "Mobile Number: " + contact.getMobile_no() + "\n" +
-                    "Blood Group: " + contact.getBlood() + "\n");
-
             contactArrayList.add(contact);
         }
         recyclerViewAdapter = new RecyclerViewAdapter(DisplayAll.this,contactArrayList);

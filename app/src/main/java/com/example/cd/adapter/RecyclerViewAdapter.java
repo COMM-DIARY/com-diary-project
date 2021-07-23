@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cd.R;
 import com.example.cd.contact.Contact;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
@@ -184,6 +185,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             e.printStackTrace();
         }
         return isInstalled;
+    }
+    public void setFilter(ArrayList<Contact> newList){
+        contactList=new ArrayList<>();
+        contactList.addAll(newList);
+        notifyDataSetChanged();
     }
 }
 

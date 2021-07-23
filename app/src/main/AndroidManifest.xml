@@ -16,8 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cd"
         tools:ignore="AllowBackup">
-        <activity android:name=".Hp"></activity>
-        <activity android:name=".Search" />
+        <activity android:name=".Hp" />
+        <activity android:name=".SearchName"/>
+        <activity android:name=".SearchPhone"/>
+        <activity android:name=".SearchAddress"/>
+        <activity android:name=".SearchCity"/>
+        <activity android:name=".SearchBlood"/>
         <activity android:name=".DisplayAll" />
         <activity android:name=".SplashScreen">
             <intent-filter>
